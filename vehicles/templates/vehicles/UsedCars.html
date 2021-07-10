@@ -1,0 +1,121 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+<link href="{% static '/css/UsedCars.css' %}" rel="stylesheet" type="text/css" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="row" style="height:85px; background-color:black"></div>
+
+
+<div class="container">
+	<!-- Search Section -->
+	<div class="container py-5">
+	    <div class="row">
+	        <div class="col-md-8 offset-2">
+	            <form>
+	                <div class="input-group">
+	                    <input type="text" name="q" class="form-control form-control-lg" placeholder="Search for vehicles" />
+	                    <div class="input-group-append">
+	                    <button class="btn btn-dark btn-sm" type="submit" id="button-addon2">Search</button>
+	                    </div>
+	                </div>
+	            </form>
+	        </div>
+	    </div>
+	</div>
+    <br>
+	<br>
+	<div class="row m-2" id="ads">
+		{% if q %}
+		<h6 class="text-muted text-center">You Searched For {{q}}</h6>
+		{% endif %}
+	    <!-- Category Card -->
+	    {% for veh in vehicles %}
+	    <div class="col-md-6 mt-4">
+	        <div class="card rounded w-100">
+	            <div class="card-image">
+	                <span class="card-notify-badge">£ {{veh.price|intcomma}}</span>
+	                <span class="card-notify-year">{{veh.model_year}}</span>
+	                <img class="img-fluid" src="{{veh.image.url}}" alt="Alternate Text" />
+	            </div>
+	            <br>
+	            <div class="card-image-overlay m-auto">
+	                <span class="card-detail-badge">£ {{veh.price|intcomma}}</span>
+	                <span class="card-detail-badge">Used</span>
+	            </div>
+	            <div class="card-body text-center">
+	                <div class="ad-title m-auto">
+	                    <h5 style="font-weight:bold">{{veh.name}}</h5>
+	                </div>
+	                <hr>
+	                <br>
+	                <h5 class="text-center">Key Facts</h5>
+	                <div class="row text-center">
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/schedule.png'%}"/>
+	          				<h6>Model Year</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.model_year}}</h6>
+	          			</div>
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/fuel.png'%}"/>
+	          				<h6 >Fuel Type</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.fuel_type}}</h6>
+	          			</div>
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/racing.png'%}"/>
+	          				<h6>Mileage</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.mileage}}</h6>
+	          			</div>
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/car-engine.png'%}"/>
+	          				<h6>Engine Size</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.engine_size}}</h6>
+	          			</div>
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/automatic-transmission.png'%}"/>
+	          				<h6>Transmission</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.transmission}}</h6>
+	          			</div>
+	          			<div class="col-sm-4">
+	          				<img width=32px height=32px src="{% static 'images/usedcarspage/paint-brush.png'%}"/>
+	          				<h6>Color</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.color}}</h6>
+	          			</div>
+	          		</div>
+	                <a class="ad-btn" href="{% url 'usedcarsdetailspage' veh.id %}">View Full Specification</a>
+	            </div>
+	        </div>
+	    </div>
+	    {% endfor %}
+	</div>
+
+	{% if vehicles.has_other_pages %}
+	<!-- Pagination -->
+	<nav class="my-3 container">
+	    <ul class="pagination">
+	        {% if vehicles.has_previous %}
+	      <li class="page-item"><a class="page-link" href="?page={{vehicles.previous_page_number}}">Previous</a></li>
+	      {% endif %}
+	      {% for i in vehicles.paginator.page_range %}
+	      {% if vehicles.number == i %}
+	      <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+	      {% else %}
+	      <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+	      {% endif %}
+	      {% endfor %}
+	      {% if vehicles.has_next %}
+	      <li class="page-item"><a class="page-link" href="?page={{vehicles.next_page_number}}">Next</a></li>
+	      {% endif %}
+	    </ul>
+	</nav>
+	{% endif %}
+
+
+
+</div>
+
+{% endblock content %}

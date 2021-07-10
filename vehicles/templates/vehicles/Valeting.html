@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+ <header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Welcome To Our Valeting Service!</div>
+        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="">Tell Me More</a>
+    </div>
+    <div class="card">
+        <h4 class="card-header" style="color:black">
+            Used Cars Search
+        </h4>
+    </div>
+</header>
+<div class="card text-center" style="margin-top:200px">
+
+    <div class="row">
+        <div class="col-md-6">
+            Some context
+        </div>
+        <div class="col-md-6">
+            Some context
+        </div>
+    </div>
+</div>
+
+<div class="container my-4">
+
+
+    <hr class="mb-5"/>
+
+    <p class="font-weight-bold">Basic example</p>
+        
+        <!--Accordion wrapper-->
+    <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+      <!-- Accordion card -->
+      <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingOne1">
+          <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+            aria-controls="collapseOne1">
+            <h5 class="mb-0">
+              Collapsible Group Item #1 <i class="fas fa-angle-down rotate-icon"></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1"
+          data-parent="#accordionEx">
+          <div class="card-body">
+            
+          </div>
+        </div>
+
+      </div>
+      <!-- Accordion card -->
+
+      <!-- Accordion card -->
+      <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingTwo2">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+            aria-expanded="false" aria-controls="collapseTwo2">
+            <h5 class="mb-0">
+              Collapsible Group Item #2 <i class="fas fa-angle-down rotate-icon"></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2"
+          data-parent="#accordionEx">
+          <div class="card-body">
+            
+          </div>
+        </div>
+
+      </div>
+      <!-- Accordion card -->
+
+      <!-- Accordion card -->
+      <div class="card">
+
+        <!-- Card header -->
+        <div class="card-header" role="tab" id="headingThree3">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+            aria-expanded="false" aria-controls="collapseThree3">
+            <h5 class="mb-0">
+              Collapsible Group Item #3 <i class="fas fa-angle-down rotate-icon"></i>
+            </h5>
+          </a>
+        </div>
+
+        <!-- Card body -->
+        <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3"
+          data-parent="#accordionEx">
+          <div class="card-body">
+            
+          </div>
+        </div>
+
+      </div>
+      <!-- Accordion card -->
+
+    </div>
+    <!-- Accordion wrapper -->
+
+</div>
+
+
+
+{% endblock content %}

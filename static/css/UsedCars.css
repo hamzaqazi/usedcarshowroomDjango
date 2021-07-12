@@ -99,3 +99,6 @@
 .bg-danger{
     background: linear-gradient(to left, #cc0000 30%, #ffffff 125%) !important;
 }
+.bg-darkblue{
+    background: linear-gradient(to left, #003366 0%, #ccffff 100%) !important;
+}

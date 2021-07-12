@@ -21,26 +21,35 @@
     margin-bottom: 30px;
     box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
 }
+#heroimage{
+    background-image: url("/static/images/usedcarspage/showroomvan.jpg");
+    padding-top: 200px;
+    background-size: cover;
+    padding-bottom: 165px;
+}
+.bg-darkblue{
+    background: linear-gradient(to left, #003366 0%, #ccffff 100%) !important;
+}
 </style>
-<div class="row" style="height:85px; background-color:black"></div>
+<!-- <div class="row" style="height:85px; background-color:black"></div> -->
 
-<div class="container-fluid mt-4">
-    <!-- Search Section -->
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <form>
-                    <div class="input-group">
-                        <input type="text" name="q" class="form-control form-control-lg" placeholder="Search for vans" />
-                    </div>
-                    <div class="input-group-append justify-content-center">
-                        <button class="btn btn-dark " type="submit" id="button-addon2">Search</button>
-                    </div>
-                </form>
-            </div>
+<!-- Search Section -->
+<div class="" id="heroimage">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form>
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control form-control-lg" placeholder="Search for vans" />
+                </div>
+                <div class="input-group-append justify-content-center">
+                    <button class="btn btn-info " type="submit" id="button-addon2">Search</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="row">
+</div>
+<div class="container-fluid mt-4">
+    <div class="row m-2">
         <div class="col-md-8">
             <div class="card w-100">
                 <div class="card-header bg-cherry text-white">
@@ -70,7 +79,7 @@
     <div class="row m-2">
         <div class="col">
             <div class="card w-100">
-                <div class="card-header bg-danger">
+                <div class="card-header bg-darkblue">
                     <h5 class="card-title m-2">Used Vans for sale</h5>
                 </div>
                 <div class="card-body">

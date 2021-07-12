@@ -75,7 +75,7 @@ def autoShinePage(request):
 	return render(request, 'vehicles/AutoShine.html')
 
 def contactUsPage(request):
-	return render("Contact Us Page")
+	return render(request,'vehicles/Contact.html')
 
 def sendMessage(request):
 	if request.is_ajax():

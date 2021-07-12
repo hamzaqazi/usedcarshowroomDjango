@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from .models import *
 from django.core.paginator import Paginator
 from django.core import serializers
+from .forms import *
 
 # Create your views here.
 def homePage(request):
@@ -34,6 +35,23 @@ def usedCarsPage(request):
 
 def usedCarDetailPage(request,veh_id):
 	veh = Vehicle.objects.get(id=veh_id)
+	if request.is_ajax():
+		name = request.POST.get('name')
+		email = request.POST.get('email')
+		phone = request.POST.get('phone')
+		message = request.POST.get('enquirymessage')
+
+		new_message = VehicleInquirie(vehicle=veh, customer_name=name, customer_email=email, customer_phone=phone, customer_message=message)
+		new_message.save()
+		
+		response ={
+			'name': name,
+			'email': email,
+			'phone': phone,
+		}
+
+		return JsonResponse(response)
+	
 	context = {
 		'veh':veh,
 	}
@@ -44,7 +62,14 @@ def usedVansPage(request):
 	return render(request, 'vehicles/UsedVans.html')
 
 def valetingPage(request):
-	return render(request, 'vehicles/Valeting.html')
+	valets = Valet.objects.all()
+
+	
+
+	context = {
+		'valets': valets,
+	}
+	return render(request, 'vehicles/Valeting.html',context)
 
 def autoShinePage(request):
 	return render(request, 'vehicles/AutoShine.html')
@@ -66,6 +91,30 @@ def sendMessage(request):
 			'name': name,
 			'email': email,
 			'phone': phone,
+		}
+
+		return JsonResponse(response)
+
+
+def sendValetEnquiry(request):
+	# valet = Valet.objects.get(id=valet_id)
+
+	if request.is_ajax():
+		valet_id = request.POST.get('valet_id')
+		valet = Valet.objects.get(id=valet_id)
+		name = request.POST.get('name')
+		email = request.POST.get('email')
+		phone = request.POST.get('phone')
+		message = request.POST.get('valetenquirymessage')
+
+		new_valet_enquiry = ValetEnquirie(valet=valet, customer_name=name, customer_email=email, customer_phone=phone, customer_message=message)
+		new_valet_enquiry.save()
+		
+		response ={
+			'name': name,
+			'email': email,
+			'phone': phone,
+			'valet_id': valet_id,
 		}
 
 		return JsonResponse(response)

@@ -11,24 +11,24 @@
 <div class="row" style="height:85px; background-color:black"></div>
 
 
-<div class="container">
+<div class="container-fluid">
 	<!-- Search Section -->
 	<div class="container py-5">
-	    <div class="row">
-	        <div class="col-md-8 offset-2">
+	    <div class="row justify-content-center">
+	        <div class="col-md-8">
 	            <form>
 	                <div class="input-group">
 	                    <input type="text" name="q" class="form-control form-control-lg" placeholder="Search for vehicles" />
-	                    <div class="input-group-append">
-	                    <button class="btn btn-dark btn-sm" type="submit" id="button-addon2">Search</button>
-	                    </div>
 	                </div>
+	                <div class="input-group-append justify-content-center">
+                    	<button class="btn btn-dark " type="submit" id="button-addon2">Search</button>
+                    </div>
 	            </form>
 	        </div>
 	    </div>
 	</div>
-    <br>
-	<br>
+    
+
 	<div class="row m-2" id="ads">
 		{% if q %}
 		<h6 class="text-muted text-center">You Searched For {{q}}</h6>
@@ -68,7 +68,7 @@
 	          			<div class="col-sm-4">
 	          				<img width=32px height=32px src="{% static 'images/usedcarspage/racing.png'%}"/>
 	          				<h6>Mileage</h6>
-	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.mileage}}</h6>
+	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.mileage|intcomma}}</h6>
 	          			</div>
 	          			<div class="col-sm-4">
 	          				<img width=32px height=32px src="{% static 'images/usedcarspage/car-engine.png'%}"/>
@@ -86,12 +86,13 @@
 	          				<h6 class="font-weight-bold" style="color:crimson">{{veh.color}}</h6>
 	          			</div>
 	          		</div>
-	                <a class="ad-btn" href="{% url 'usedcarsdetailspage' veh.id %}">View Full Specification</a>
+	                <a class="ad-btn" href="{% url 'usedcarsdetailspage' veh.id %}">View Advert</a>
 	            </div>
 	        </div>
 	    </div>
 	    {% endfor %}
 	</div>
+	
 
 	{% if vehicles.has_other_pages %}
 	<!-- Pagination -->
@@ -113,9 +114,32 @@
 	    </ul>
 	</nav>
 	{% endif %}
+	<div class="row m-2">
+		<dic class="col">
+			<div class="card w-100">
+				<div class="card-header bg-danger">
+					<h5 class="card-title m-2">Used Cars for sale</h5>
+				</div>
+				<div class="card-body">
+					<p class="card-text">
+						We are confident you will not be disappointed with our selection of quality used cars. At Used Car Showroom Ltd we offer an extensive range of services and extras meaning that you can buy your used car with confidence and peace of mind. Our showroom in Smethwick stocks a wide range of cars that are ready for viewing today.
+					</p>
+				</div>
+			</div>
+		</dic>
+	</div>
 
 
+</div>
 
+<div class="row m-2">
+	<dic class="col">
+		<div class="card w-100">
+			<div class="card-header bg-dark text-white">
+				<h6 class="card-title m-2"><i class="fas fa-map-marker-alt mr-2" ></i>Unit 13 CORNWALL ROAD INDUSTRIAL ESTATE, Smethwick, West Midlands, B66 2JT<span class="float-right"><i class="fas fa-phone-alt mr-2" ></i>07765 244907 | 0121 5724898</span></h6>
+			</div>
+		</div>
+	</dic>
 </div>
 
 {% endblock content %}

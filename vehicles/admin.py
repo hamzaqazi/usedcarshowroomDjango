@@ -59,3 +59,18 @@ admin.site.register(VehicleDimension)
 admin.site.register(VehicleSafety)
 admin.site.register(VehicleInquirie)
 admin.site.register(Message)
+
+admin.site.register(ValetFeature)
+admin.site.register(ValetEnquirie)
+
+class ValetFeatureAdmin(admin.StackedInline):
+	model = ValetFeature
+	
+@admin.register(Valet)
+class ValetAdmin(admin.ModelAdmin):
+	inlines = [
+		ValetFeatureAdmin
+	]
+
+	class Meta:
+		model = Valet

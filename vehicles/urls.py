@@ -12,4 +12,5 @@ urlpatterns = [
     path('AutoShine/', views.autoShinePage, name='autoshinepage'),
     path('ContactUs/', contactUsPage),
     path('sendMessage/', sendMessage, name='sendMessage'),
+    path('sendValetEnquiry/', sendValetEnquiry, name='sendValetEnquiry'),
 ]

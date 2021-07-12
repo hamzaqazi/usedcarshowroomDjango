@@ -120,7 +120,7 @@ class VehicleInquirie(models.Model):
 	inquiry_date = models.DateField(auto_now_add=True)
 
 	def __str__(self):
-		return self.client_name
+		return self.customer_name + ' | ' + self.vehicle.name + ' | ' + self.customer_phone
 
 class Message(models.Model):
 	name = models.CharField(max_length=250, help_text='Your name')
@@ -131,3 +131,31 @@ class Message(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+class Valet(models.Model):
+	name = models.CharField(max_length=250, help_text='Mini valet')
+	price = models.IntegerField(help_text='Valet price')
+
+	def __str__(self):
+		return self.name
+
+
+class ValetFeature(models.Model):
+	valet = models.ForeignKey(Valet,default=None, on_delete=models.CASCADE)
+	feature = models.CharField(max_length=250, default='No details available', help_text='Valet feature')
+
+	def __str__(self):
+		return self.valet.name
+
+		
+class ValetEnquirie(models.Model):
+	valet = models.ForeignKey(Valet,default=None,on_delete=models.CASCADE)
+	customer_name = models.CharField(max_length=250, default='Name', help_text='Your name')
+	customer_email = models.EmailField(max_length=250)
+	customer_phone = models.CharField(max_length=250, help_text='Phone')
+	customer_message = models.TextField(help_text='Your message')
+	inquiry_date = models.DateField(auto_now_add=True)
+
+	def __str__(self):
+		return self.customer_name + ' | ' + self.valet.name + ' | ' + self.customer_phone

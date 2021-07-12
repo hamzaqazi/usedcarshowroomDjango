@@ -95,3 +95,7 @@
     text-transform: uppercase;
     font-size: 18px;
 }
+
+.bg-danger{
+    background: linear-gradient(to left, #cc0000 30%, #ffffff 125%) !important;
+}

@@ -79,7 +79,7 @@
 					{% endfor %}
 					<div class="row justify-content-center">
 						<div class="col-sm-6">
-							<h5><a class="badge badge-pill badge-success" data-bs-toggle="collapse" href="#collapseMoreImg"  aria-expanded="false" aria-controls="collapseExample">Show More Photos</a></h5>
+							<h5><a class="badge badge-pill badge-success" id="moreimg" data-bs-toggle="collapse" href="#collapseMoreImg"  aria-expanded="false" aria-controls="collapseExample">Show More Photos</a></h5>
 		          		</div>
 		          		<div class="collapse" id="collapseMoreImg">
 		          			<div class="row text-center">
@@ -516,7 +516,7 @@
 	$(document).ready(function() {
 
   
-		$('[data-bs-toggle="collapse"]').click(function() {
+		$('#moreimg').click(function() {
 		  $(this).toggleClass( "active" );
 		  if ($(this).hasClass("active")) {
 		    $(this).text("Show Less Photos");

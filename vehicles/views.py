@@ -5,6 +5,7 @@ from .models import *
 from django.core.paginator import Paginator
 from django.core import serializers
 from .forms import *
+from .filters import VehicleFilter
 
 # Create your views here.
 def homePage(request):
@@ -23,13 +24,20 @@ def usedCarsPage(request):
 		vehicles = Vehicle.objects.filter(name__icontains=q).order_by('-id')
 	else:
 		vehicles = Vehicle.objects.all().order_by('-id')
+		
+	
+	vehicle_filter = VehicleFilter(request.GET,queryset=vehicles)
+	vehicles = vehicle_filter.qs
+
 	paginator = Paginator(vehicles,4)
 	page_num = request.GET.get('page',1)
 	vehicles = paginator.page(page_num)
 
 
+
 	context = {
 		'vehicles': vehicles,
+		'vehicle_filter': vehicle_filter,
 	}
 	return render(request, 'vehicles/UsedCars.html', context)
 

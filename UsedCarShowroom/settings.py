@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'vehicles',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [

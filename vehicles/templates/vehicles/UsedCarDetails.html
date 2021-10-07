@@ -6,6 +6,8 @@
 
 
 <link href="{% static '/css/UsedCarDetails.css' %}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -64,37 +66,15 @@
 	      	</div>
 	      <!-- Photo Gallery Start -->
 	      	<div class="col-md-5">
-		        <div class="row m-2">
-		         	<div class="col-sm-12">
-		         		<div class="form-group">
-		         			<img id="car-img" class="img-fluid popup" src="{{veh.image.url}}" alt="image">
-		         		</div>
-		         	</div>
-		         	{% for i in veh.vehicleimage_set.all|slice:":2" %}
-		         	<div class="col-sm-6 mt-2">
-		         		<div class="form-group">
-		         			<img id="car-img" class="img-fluid popup" src="{{i.image.url}}" alt="image">
-		         		</div>
-		         	</div>
-					{% endfor %}
-					<div class="row justify-content-center">
-						<div class="col-sm-6">
-							<h5><a class="badge badge-pill badge-success" id="moreimg" data-bs-toggle="collapse" href="#collapseMoreImg"  aria-expanded="false" aria-controls="collapseExample">Show More Photos</a></h5>
-		          		</div>
-		          		<div class="collapse" id="collapseMoreImg">
-		          			<div class="row text-center">
-		          				<p class="text-muted">Click on image to zoom in</p>
-			          			{% for i in veh.vehicleimage_set.all|slice:"2:" %}
-			          			<div class="col-sm-6 mt-2">
-					         		<div class="form-group">
-						         		<img id="car-img" class="img-fluid popup" src="{{i.image.url}}" alt="image">
-					         		</div>
-					         	</div>
-					         	{% endfor %}
-					        </div>
-		          		</div>
-					</div>	         	
-		        </div>
+	      		<a data-fancybox ="gallery" href="{{veh.image.url}}">
+	      			<img class="rounded m-2" style="max-width:100%" src="{{veh.image.url}}">
+	      		</a>
+      			{% for i in veh.vehicleimage_set.all %}
+	      			<a data-fancybox ="gallery" href="{{i.image.url}}">
+	      				<img class="rounded m-2" style="max-width:150px" src="{{i.image.url}}">
+	      			</a>
+      			{% endfor %}
+	      		
 	      	</div>
 	      	<!-- End of Photo Gallery -->
   		</div>
@@ -512,26 +492,13 @@
         </div>
     </div>
 </div>
-<script>
-	$(document).ready(function() {
 
-  
-		$('#moreimg').click(function() {
-		  $(this).toggleClass( "active" );
-		  if ($(this).hasClass("active")) {
-		    $(this).text("Show Less Photos");
-		  } else {
-		    $(this).text("Show More Photos");
-		  }
-		});
-	});
 
-	$('.popup').click(function() {
-		var src=$(this).attr('src');
-		$('#imgModal').modal('show');
-		$('#popup-img').attr('src',src);
-	});
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+
 <script type="text/javascript">
     const url = window.location.href
     $('#enquiryForm').on('submit',function(e) {

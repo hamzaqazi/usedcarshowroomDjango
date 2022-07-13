@@ -4,6 +4,7 @@ from . import views
 
 
 urlpatterns = [
+    # path('usedcarss/',VehicleListView.as_view(),name = 'usedcarpage'),
     path('', views.homePage, name='homepage'),
     path('UsedCars/', views.usedCarsPage, name='usedcarspage'),
     path('CarDetails/<int:veh_id>/', views.usedCarDetailPage, name='usedcarsdetailspage'),

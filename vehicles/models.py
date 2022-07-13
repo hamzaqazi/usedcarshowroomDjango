@@ -31,7 +31,7 @@ class Vehicle(models.Model):
 
 
     def __str__(self):
-    	return self.name
+    	return str(self.name)
 
 class VehicleImage(models.Model):
 	vehicle = models.ForeignKey(Vehicle, default=None, on_delete=models.CASCADE)

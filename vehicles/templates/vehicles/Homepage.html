@@ -105,7 +105,9 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                                 </div>
+                                {% if veh.image %}
                                 <img class="img-fluid" src="{{veh.image.url}}" alt="..." />
+                                {% endif %}
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">{{veh.name}}</div>
@@ -391,7 +393,9 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">{{veh.name}}</h2>
                                     <p class="item-intro text-muted">{{veh.short_description}}</p>
+                                    {% if veh.image %}
                                     <img class="img-fluid d-block mx-auto" src="{{veh.image.url}}" alt="..." />
+                                    {% endif %}
                                     <!-- <p>{{veh.long_description}}</p> -->
                                     <h4 class="text-center">Key Facts</h4>
                                     <div class="row text-center">

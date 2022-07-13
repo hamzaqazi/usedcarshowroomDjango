@@ -6,6 +6,17 @@ from django.core.paginator import Paginator
 from django.core import serializers
 from .forms import *
 from .filters import VehicleFilter
+import json
+from django.views.generic import ListView
+
+# class VehicleListView(ListView):
+# 	model = Vehicle
+# 	template_name = 'vehicles/UsedCars.html'
+
+# 	def get_context_data(self,**kwargs):
+# 		context = super().get_context_data(**kwargs)
+# 		context["qs_json"] = json.dumps(list(Vehicle.objects.values()),default=str)
+# 		return context
 
 # Create your views here.
 def homePage(request):
@@ -38,12 +49,13 @@ def usedCarsPage(request):
 	context = {
 		'vehicles': vehicles,
 		'vehicle_filter': vehicle_filter,
+		'qs_json' : json.dumps(list(Vehicle.objects.values()),default=str)
 	}
 	return render(request, 'vehicles/UsedCars.html', context)
 
 def usedCarDetailPage(request,veh_id):
 	veh = Vehicle.objects.get(id=veh_id)
-	if request.is_ajax():
+	if  request.headers.get('x-requested-with') == 'XMLHttpRequest': 
 		name = request.POST.get('name')
 		email = request.POST.get('email')
 		phone = request.POST.get('phone')

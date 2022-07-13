@@ -27,12 +27,13 @@
 	        <div class="col-md-8">
 	            <form>
 	                <div class="input-group">
-	                    <input type="text" name="q" class="form-control form-control-lg" placeholder="Search for vehicles" />
+	                    <input id="search_here" type="text" name="q" class="form-control form-control-lg" placeholder="Search for vehicles" />
 	                </div>
 	                <div class="input-group-append justify-content-center">
                     	<button class="btn btn-info " type="submit" id="button-addon2">Search</button>
                     </div>
 	            </form>
+
 	        </div>
 	    </div>
 	    <div class="row justify-content-center mt-2">
@@ -175,18 +176,19 @@
 
 
 <script type="text/javascript">
-	console.log('javascript')
-	
-	console.log('javascript')
 	$(function(){
-		var available_make = [
+		var available_veh = [
 			{% for veh in vehicles %}
 			"{{veh.name}}",
 			{% endfor %}	
 		];
 		$("#id_name").autocomplete({
-			source: available_make
+			source: available_veh
 		});
+		$("#search_here").autocomplete({
+			source: available_veh
+		});
+
 	});
 
 

@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn UsedCarShowroom.wsgi
+web: gunicorn UsedCarShowroom.wsgi --log-file -
